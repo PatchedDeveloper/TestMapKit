@@ -10,19 +10,37 @@ import CoreLocation
 
 struct ContentView: View {
     @StateObject var mapData = MapViewModel()
-    
+    @State var mileage: Double = 0.0
     //LocationManager
     @State var locationManager = CLLocationManager()
     
     
     var body: some View {
         ZStack {
-            MapView()
+            MapView(onDistanceUpdated: { distance in
+                           mileage = distance
+                       })
                 .environmentObject(mapData)
                 .ignoresSafeArea(.all, edges: .all)
             
             HStack{
+                VStack{
+                    Spacer()
+                    HStack{
+                        Text("Километраж:" + "\(mileage)")
+                            .font(.headline)
+                            .fontWeight(.bold)
+                            .foregroundColor(.white)
+                            .padding()
+                            .background(Color.gray)
+                            .cornerRadius(10)
+                            .padding(.bottom, 70)
+                    }
+
+                 
+                }
                 Spacer()
+             
                 VStack{
                     Spacer()
                     VStack{

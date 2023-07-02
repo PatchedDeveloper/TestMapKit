@@ -11,6 +11,8 @@ import CoreLocation
 
 class MapViewModel: NSObject,ObservableObject,CLLocationManagerDelegate{
     
+    
+    
     @Published var mapView = MKMapView()
     
     //Region...
@@ -22,6 +24,8 @@ class MapViewModel: NSObject,ObservableObject,CLLocationManagerDelegate{
     //MapType
     @Published var mapType: MKMapType = .mutedStandard
     //update maptype
+    @Published var userLatitude: CLLocationDegrees = 0.0
+    @Published var userLongitude: CLLocationDegrees = 0.0
     
     func updateMapType(){
         if mapType == .mutedStandard{
@@ -41,6 +45,7 @@ class MapViewModel: NSObject,ObservableObject,CLLocationManagerDelegate{
         
         mapView.setRegion(region, animated: true)
         mapView.setVisibleMapRect(mapView.visibleMapRect, animated: true)
+        
     }
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
@@ -68,7 +73,7 @@ class MapViewModel: NSObject,ObservableObject,CLLocationManagerDelegate{
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
-        guard let location = locations.last else {return}
+        guard let location = locations.last else { return }
         
         self.region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
         
