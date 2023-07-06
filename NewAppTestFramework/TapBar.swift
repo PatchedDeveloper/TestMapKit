@@ -12,13 +12,13 @@ struct TabBarView: View {
         TabView {
             ContentView()
                 .tabItem {
-                    Image(systemName: "map")
+                    Image(systemName: "location.fill")
                     Text("Map")
                 }
             findMapView()
                 .tabItem {
-                    Image(systemName: "house")
-                    Text("Home")
+                    Image(systemName: "person.circle")
+                    Text("Profile")
                 }
 
         }
