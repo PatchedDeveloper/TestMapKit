@@ -19,6 +19,8 @@
 		1D694DAF2A572D3100B11B56 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 1D694DAE2A572D3100B11B56 /* FirebaseAuth */; };
 		1D694DB12A572D3100B11B56 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 1D694DB02A572D3100B11B56 /* FirebaseFirestore */; };
 		1D694DB32A572D3100B11B56 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 1D694DB22A572D3100B11B56 /* FirebaseStorage */; };
+		1D694DB52A587F3F00B11B56 /* RegView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D694DB42A587F3F00B11B56 /* RegView.swift */; };
+		1D694DB72A587FA900B11B56 /* extensionsSrv.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D694DB62A587FA900B11B56 /* extensionsSrv.swift */; };
 		1D9F1FF42A5718F300F33C5A /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9F1FF32A5718F300F33C5A /* AuthView.swift */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +36,8 @@
 		1D3DCBD22A51857300FEC268 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		1D3DCBD42A519D8B00FEC268 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1D694DAA2A57251000B11B56 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1D694DB42A587F3F00B11B56 /* RegView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegView.swift; sourceTree = "<group>"; };
+		1D694DB62A587FA900B11B56 /* extensionsSrv.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensionsSrv.swift; sourceTree = "<group>"; };
 		1D9F1FF32A5718F300F33C5A /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -71,6 +75,7 @@
 			isa = PBXGroup;
 			children = (
 				1D3DCBBC2A51759D00FEC268 /* NewAppTestFrameworkApp.swift */,
+				1D3DCBD42A519D8B00FEC268 /* Info.plist */,
 				1D3DCBBE2A51759D00FEC268 /* TapBar.swift */,
 				1D3DCBCC2A51763000FEC268 /* Screen */,
 				1D3DCBC02A51759F00FEC268 /* Assets.xcassets */,
@@ -104,6 +109,7 @@
 			children = (
 				1D3DCBCD2A51764500FEC268 /* MapService.swift */,
 				1D3DCBD22A51857300FEC268 /* MapViewModel.swift */,
+				1D694DB62A587FA900B11B56 /* extensionsSrv.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -112,7 +118,6 @@
 			isa = PBXGroup;
 			children = (
 				1D694DAA2A57251000B11B56 /* GoogleService-Info.plist */,
-				1D3DCBD42A519D8B00FEC268 /* Info.plist */,
 			);
 			path = info;
 			sourceTree = "<group>";
@@ -121,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				1D9F1FF32A5718F300F33C5A /* AuthView.swift */,
+				1D694DB42A587F3F00B11B56 /* RegView.swift */,
 			);
 			path = Authorization;
 			sourceTree = "<group>";
@@ -205,10 +211,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D9F1FF42A5718F300F33C5A /* AuthView.swift in Sources */,
+				1D694DB52A587F3F00B11B56 /* RegView.swift in Sources */,
 				1D3DCBCB2A51762B00FEC268 /* HomeView.swift in Sources */,
 				1D3DCBBF2A51759D00FEC268 /* TapBar.swift in Sources */,
 				1D3DCBD32A51857300FEC268 /* MapViewModel.swift in Sources */,
 				1D3DCBCE2A51764500FEC268 /* MapService.swift in Sources */,
+				1D694DB72A587FA900B11B56 /* extensionsSrv.swift in Sources */,
 				1D3DCBBD2A51759D00FEC268 /* NewAppTestFrameworkApp.swift in Sources */,
 				1D3DCBD12A517A8700FEC268 /* findMapView.swift in Sources */,
 			);

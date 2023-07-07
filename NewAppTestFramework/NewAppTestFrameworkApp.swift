@@ -6,12 +6,24 @@
 //
 
 import SwiftUI
+import Firebase
+
+let screen = UIScreen.main.bounds
 
 @main
 struct NewAppTestFrameworkApp: App {
     var body: some Scene {
         WindowGroup {
-            TabBarView()
+            AuthView()
+        }
+    }
+    
+    class AppDelegate: NSObject,UIApplicationDelegate {
+        func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+            
+            FirebaseApp.configure()
+            
+            return true
         }
     }
 }
