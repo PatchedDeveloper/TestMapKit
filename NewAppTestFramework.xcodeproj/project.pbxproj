@@ -21,6 +21,7 @@
 		1D694DB32A572D3100B11B56 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 1D694DB22A572D3100B11B56 /* FirebaseStorage */; };
 		1D694DB52A587F3F00B11B56 /* RegView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D694DB42A587F3F00B11B56 /* RegView.swift */; };
 		1D694DB72A587FA900B11B56 /* extensionsSrv.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D694DB62A587FA900B11B56 /* extensionsSrv.swift */; };
+		1D694DB92A596AFA00B11B56 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D694DB82A596AFA00B11B56 /* AuthService.swift */; };
 		1D9F1FF42A5718F300F33C5A /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9F1FF32A5718F300F33C5A /* AuthView.swift */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +39,7 @@
 		1D694DAA2A57251000B11B56 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1D694DB42A587F3F00B11B56 /* RegView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegView.swift; sourceTree = "<group>"; };
 		1D694DB62A587FA900B11B56 /* extensionsSrv.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensionsSrv.swift; sourceTree = "<group>"; };
+		1D694DB82A596AFA00B11B56 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		1D9F1FF32A5718F300F33C5A /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -107,6 +109,7 @@
 		1D3DCBCF2A51764900FEC268 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				1D694DB82A596AFA00B11B56 /* AuthService.swift */,
 				1D3DCBCD2A51764500FEC268 /* MapService.swift */,
 				1D3DCBD22A51857300FEC268 /* MapViewModel.swift */,
 				1D694DB62A587FA900B11B56 /* extensionsSrv.swift */,
@@ -217,6 +220,7 @@
 				1D3DCBD32A51857300FEC268 /* MapViewModel.swift in Sources */,
 				1D3DCBCE2A51764500FEC268 /* MapService.swift in Sources */,
 				1D694DB72A587FA900B11B56 /* extensionsSrv.swift in Sources */,
+				1D694DB92A596AFA00B11B56 /* AuthService.swift in Sources */,
 				1D3DCBBD2A51759D00FEC268 /* NewAppTestFrameworkApp.swift in Sources */,
 				1D3DCBD12A517A8700FEC268 /* findMapView.swift in Sources */,
 			);

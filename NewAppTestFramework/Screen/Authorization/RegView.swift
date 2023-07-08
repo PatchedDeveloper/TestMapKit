@@ -12,6 +12,12 @@ struct RegView: View {
     @State private var isLogoVisible = true
     @State private var email: String = ""
     @State private var password: String = ""
+    @State private var confirmPassword: String = ""
+    @State private var isShowAlert = false
+    @State private var alertMessage = ""
+    
+    
+    
     var body: some View {
         VStack {
 Spacer()
@@ -66,7 +72,7 @@ Spacer()
                                 .foregroundColor(.white)
                                 .padding(.leading, 10)
            
-                    TextField("REPEAT PASSWORD", text: $password)
+                    TextField("REPEAT PASSWORD", text: $confirmPassword)
                         .foregroundColor(.white) // Color of the entered text
                         .underline()
                         .accentColor(.white) // Color of the placeholder text
@@ -84,6 +90,31 @@ Spacer()
 
                 
                 Button {
+                    print("User Registration...")
+                    
+                    guard password == confirmPassword else {
+                        self.alertMessage = "Пароли не совпадают!"
+                        self.isShowAlert.toggle()
+                        return
+                    }
+                    
+                    AuthService.shared.signUp(email: email,
+                                              password: password) { result in
+                        switch result{
+                            
+                        case .success(let user):
+                            alertMessage = "Вы зарегистрировались с почтой \(user.email!)!"
+                            self.isShowAlert.toggle()
+                            self.email = ""
+                            self.password = ""
+                            self.confirmPassword = ""
+                            //добавить переход на страницу авторизации
+                        case .failure(let error):
+                            alertMessage = "Ошибка регистрации \(error.localizedDescription)!"
+                            self.isShowAlert.toggle()
+                        }
+                    }
+                    
                     
                 } label: {
                     Text("SIGN UP")
@@ -118,6 +149,12 @@ Spacer()
             Spacer()
 
 
+        }
+        .alert( alertMessage,
+                isPresented: $isShowAlert){
+            Button{} label: {
+                Text("OK")
+            }
         }
         .ignoresSafeArea()
         .frame(maxWidth: .infinity, maxHeight: .infinity)

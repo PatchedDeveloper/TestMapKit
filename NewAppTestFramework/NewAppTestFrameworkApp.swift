@@ -7,14 +7,18 @@
 
 import SwiftUI
 import Firebase
+import FirebaseAuth
 
 let screen = UIScreen.main.bounds
 
 @main
 struct NewAppTestFrameworkApp: App {
+    
+    @UIApplicationDelegateAdaptor private var appDelegate : AppDelegate
+    
     var body: some Scene {
         WindowGroup {
-            AuthView()
+            RegView()
         }
     }
     
@@ -22,7 +26,7 @@ struct NewAppTestFrameworkApp: App {
         func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
             
             FirebaseApp.configure()
-            
+            print("firebase configure ok")
             return true
         }
     }
