@@ -12,7 +12,10 @@ struct AuthView: View {
     @State private var isLogoVisible = true
     @State private var email: String = ""
     @State private var password: String = ""
-    
+    @State private var isReg = false
+    @State private var isShowAlert = false
+    @State private var alertMessage = ""
+    @State private var isTabBar = false
     
     var body: some View {
         VStack {
@@ -67,19 +70,35 @@ Spacer()
 
                 
                 Button {
-                    
+                    print("User Authorized...")
+                    AuthService.shared.signIn(email: email,
+                                              password: password) { result  in
+                        switch result{
+                            
+                        case .success(let user):
+                            isTabBar.toggle()
+                        case .failure(let error):
+                            alertMessage = "Ошибка авторизации \(error.localizedDescription)!"
+                            self.isShowAlert.toggle()
+                        }
+                    }
                 } label: {
                     Text("SIGN IN")
                         .foregroundColor(.white)
                         .font(Font.system(size: 20, weight: .bold))
                 }
+                
                 .frame(width: 254, height: 54)
                 .background(
                     Color("BtnSignIn")
-                        .blur(radius: 10) // Apply the blur effect
+                        .blur(radius: 10)
+                    // Apply the blur effect
                 )
                 .cornerRadius(30)
                 .padding(.top, 30)
+                .fullScreenCover(isPresented: $isTabBar) {
+                    TabBarView()
+                           }
             }
             
             Text("DON’T HAVE ACCOUNT?")
@@ -88,19 +107,28 @@ Spacer()
                 .padding(.top,70)// Установка жирного шрифта
                 
             Button {
-                
+                isReg.toggle()
             } label: {
                 Text("Sign up")
                     .foregroundColor(.white)
                     .font(Font.system(size: 20, weight: .bold))
                 
             }
+            .fullScreenCover(isPresented: $isReg) {
+                           RegView()
+                       }
             .padding(.top,1)
 
 
             Spacer()
 
 
+        }
+        .alert( alertMessage,
+                isPresented: $isShowAlert){
+            Button{} label: {
+                Text("OK")
+            }
         }
         .ignoresSafeArea()
         .frame(maxWidth: .infinity, maxHeight: .infinity)

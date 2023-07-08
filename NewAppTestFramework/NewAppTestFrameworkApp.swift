@@ -18,7 +18,7 @@ struct NewAppTestFrameworkApp: App {
     
     var body: some Scene {
         WindowGroup {
-            RegView()
+            AuthView()
         }
     }
     

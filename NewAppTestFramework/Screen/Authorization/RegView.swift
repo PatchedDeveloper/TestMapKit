@@ -15,8 +15,8 @@ struct RegView: View {
     @State private var confirmPassword: String = ""
     @State private var isShowAlert = false
     @State private var alertMessage = ""
-    
-    
+    @State private var isAuth = false
+        
     
     var body: some View {
         VStack {
@@ -103,12 +103,11 @@ Spacer()
                         switch result{
                             
                         case .success(let user):
-                            alertMessage = "Вы зарегистрировались с почтой \(user.email!)!"
+                            alertMessage = "Вы зарегистрировались с почтой \(user.email!)! Войдите в свой аккаунт."
                             self.isShowAlert.toggle()
                             self.email = ""
                             self.password = ""
                             self.confirmPassword = ""
-                            //добавить переход на страницу авторизации
                         case .failure(let error):
                             alertMessage = "Ошибка регистрации \(error.localizedDescription)!"
                             self.isShowAlert.toggle()
@@ -136,13 +135,16 @@ Spacer()
                 .padding(.top,70)// Установка жирного шрифта
                 
             Button {
-                
+                isAuth.toggle()
             } label: {
                 Text("Sign in")
                     .foregroundColor(.white)
                     .font(Font.system(size: 20, weight: .bold))
                 
             }
+            .fullScreenCover(isPresented: $isAuth) {
+                           AuthView()
+                       }
             .padding(.top,1)
 
 
