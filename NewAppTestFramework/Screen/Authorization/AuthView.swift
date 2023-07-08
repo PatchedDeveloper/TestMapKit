@@ -6,7 +6,9 @@
 //
 
 import SwiftUI
-
+import Firebase
+import FirebaseAuth
+import GoogleSignIn
 
 struct AuthView: View {
     @State private var isLogoVisible = true
@@ -16,6 +18,7 @@ struct AuthView: View {
     @State private var isShowAlert = false
     @State private var alertMessage = ""
     @State private var isTabBar = false
+    @State private var isAuthenticated = false
     
     var body: some View {
         VStack {
@@ -100,6 +103,61 @@ Spacer()
                     TabBarView()
                            }
             }
+            
+            //another metod authorized
+            HStack{
+                
+                //google
+                Button {
+                    print("Auth with Google")
+                    
+                    guard let clientID = FirebaseApp.app()?.options.clientID else { return }
+                            
+                    let config = GIDConfiguration(clientID: clientID)
+
+                    GIDSignIn.sharedInstance.configuration = config
+                            
+                    GIDSignIn.sharedInstance.signIn(withPresenting: getRootViewController()) { signResult, error in
+                                
+                        if let error = error {
+                           return
+                        }
+                                
+                         guard let user = signResult?.user,
+                               let idToken = user.idToken else { return }
+                         
+                         let accessToken = user.accessToken
+                                
+                         let credential = GoogleAuthProvider.credential(withIDToken: idToken.tokenString, accessToken: accessToken.tokenString)
+
+                        // добавление в базу данных провайдера
+                        Auth.auth().signIn(with: credential){ result,error in
+                            
+                            guard  error == nil else {
+                                return
+                            }
+                            
+                            isAuthenticated = true 
+                        }
+                        // Use the credential to authenticate with Firebase
+
+                    }
+                } label: {
+                    Image("google")
+                        .resizable()
+                        .frame(width: 40, height: 40)
+                }
+                .fullScreenCover(isPresented: $isAuthenticated) {
+                               TabBarView()
+                           }
+
+
+
+                Spacer()
+                
+            }
+            .frame(width: 150)
+            .padding(.top,15)
             
             Text("DON’T HAVE ACCOUNT?")
                 .foregroundColor(.gray  )
